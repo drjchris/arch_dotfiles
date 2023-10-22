@@ -57,7 +57,7 @@ Find out the name of the drive your will delete.
 lsblk
 ```
 
-You are after the root name. In my case its “nvme0n1”.
+You are after the root name. In my case its `nvme0n1`.
 
 Now this will NUKE the drive!
 
