@@ -17,10 +17,29 @@ call plug#end()
 " Color Theme
 colorscheme kanagawa
 
-" Sortout the tab stuff
+" show cursor line
+set cursorline
+
+" show line numbers
 set number
+
+" Sortout the tab stuff
 set tabstop=4
 set shiftwidth=4
 set shiftwidth=4
 set expandtab
 
+" fix hilight
+set nohlsearch
+
+" copy to clipboard
+set clipboard=unnamedplus
+
+" remove text wrap
+set nowrap
+
+" lines always visible
+set scrolloff=5
+
+
+highlight CursorLine ctermbg=black guibg=#101018
