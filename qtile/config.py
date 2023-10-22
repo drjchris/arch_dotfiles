@@ -60,7 +60,14 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+   
+    Key([mod], "i", lazy.layout.grow()),
+    Key([mod], "m", lazy.layout.shrink()),
+    Key([mod], "n", lazy.layout.normalize()),
+    Key([mod], "o", lazy.layout.maximize()),
+    Key([mod, "shift"], "space", lazy.layout.flip()),
+    # Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
     Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
@@ -73,7 +80,7 @@ keys = [
     Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    # Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -128,18 +135,25 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(
+        #layout.Columns(
         # border_focus_stack=["#d75f5f", "#8f3d3d"],
-        border_width=2,
-        border_focus=col_red,
-        border_normal=col_bg0,
-    ),
-    layout.Max(),
+        #border_width=2,
+        #border_focus=col_red,
+        #border_normal=col_bg0,
+        #),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    # layout.MonadTall(),
+    layout.MonadTall(
+        border_width=2,
+        border_focus=col_red,
+        border_normal=col_bg0,
+        ratio=0.70,
+        min_ratio=0.55,
+        max_ratio=0.75,
+        ),
+    layout.Max(),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -161,7 +175,7 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                #widget.CurrentLayout(),
+                # widget.CurrentLayout(),
                 widget.GroupBox(
                         highlight_method="block",
                         active=col_fg0,
@@ -192,8 +206,8 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Systray(),
                 widget.Clock(format="[ 󰃰 %Y-%m-%d %H:%M ] "),
+                widget.Systray(),
             ],
             32,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders

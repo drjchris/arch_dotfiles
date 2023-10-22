@@ -49,3 +49,6 @@ set scrolloff=5
 
 " highlight current row and change background color
 highlight CursorLine guibg=#101018
+
+" make command line only one row high
+set cmdheight&
