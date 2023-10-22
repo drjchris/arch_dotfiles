@@ -47,5 +47,5 @@ set nowrap
 " lines always visible
 set scrolloff=5
 
-
-highlight CursorLine ctermbg=black guibg=#101018
+" highlight current row and change background color
+highlight CursorLine guibg=#101018
