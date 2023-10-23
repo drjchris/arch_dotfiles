@@ -35,6 +35,7 @@ from libqtile.utils import guess_terminal
 col_test = "#ff0000"
 
 col_bg0="#1f1f28"
+col_bg1="#0f0f18"
 col_fg0="#dcd7ba"
 
 col_red = "#c34043"
@@ -148,7 +149,7 @@ layouts = [
     layout.MonadTall(
         border_width=2,
         border_focus=col_red,
-        border_normal=col_bg0,
+        border_normal=col_bg1,
         ratio=0.70,
         min_ratio=0.50,
         max_ratio=0.75,
