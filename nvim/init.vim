@@ -52,3 +52,8 @@ highlight CursorLine guibg=#101018
 
 " make command line only one row high
 set cmdheight&
+
+" set the fold method and marker
+set foldmethod=marker
+set foldmarker=<<<,>>>
+
