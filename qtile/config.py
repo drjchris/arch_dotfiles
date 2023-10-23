@@ -51,6 +51,10 @@ keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
 
+    # for screen brighness
+    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 10")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 10")),
+
     # for sound
     Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%")),
@@ -195,7 +199,8 @@ screens = [
                     backlight_name="amdgpu_bl1",
                     brightness_file="/sys/class/backlight/amdgpu_bl1/actual_brightness",
                     max_brightness_file="/sys/class/backlight/amdgpu_bl1/max_brightness",
-                    change_command="light -S {}",
+                    fmt="[  {} ]",
+                    # change_command="light -S {}",
                     ),
                 widget.Battery(
                     charge_char="󱐋",
