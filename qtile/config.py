@@ -150,7 +150,7 @@ layouts = [
         border_focus=col_red,
         border_normal=col_bg0,
         ratio=0.70,
-        min_ratio=0.55,
+        min_ratio=0.50,
         max_ratio=0.75,
         ),
     layout.Max(),
