@@ -163,3 +163,26 @@ Now refresh the font cache
 fc-cache -fv
 ```
 
+## Sort out backlight
+
+
+Create the file `/etc/udev/rules.d/backlight.rules` and then add the following line.
+
+```
+ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp jose $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"
+```
+
+Now install the `xbacklight` tool
+
+```
+sudo pacman -S acpilight
+```
+
+Then reboot.
+
+Check if you can do this.
+
+```
+xbacklight -set 10
+```
+

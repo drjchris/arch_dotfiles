@@ -191,6 +191,12 @@ screens = [
                 widget.Volume(
                     fmt = "[ 󰕾 {} ]"
                     ),
+                widget.Backlight(
+                    backlight_name="amdgpu_bl1",
+                    brightness_file="/sys/class/backlight/amdgpu_bl1/actual_brightness",
+                    max_brightness_file="/sys/class/backlight/amdgpu_bl1/max_brightness",
+                    change_command="light -S {}",
+                    ),
                 widget.Battery(
                     charge_char="󱐋",
                     discharge_char="󱊢",
