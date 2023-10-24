@@ -44,6 +44,10 @@ col_blue = "#7e9cd8"
 col_purple = "#957fb8"
 
 
+sep_mid = " * "
+sep_start = "[ "
+sep_end = " ] "
+
 mod = "mod4"
 terminal = guess_terminal()
 
@@ -192,33 +196,33 @@ screens = [
                         foreground=col_fg0,
                         max_chars = 30,
                     ),
+                widget.TextBox(sep_start),
                 widget.Volume(
-                    fmt = "[ 󰕾 {} ]"
+                    fmt = "󰕾 {}"
                     ),
+                widget.TextBox(sep_mid),
                 widget.Backlight(
                     backlight_name="amdgpu_bl1",
                     brightness_file="/sys/class/backlight/amdgpu_bl1/actual_brightness",
                     max_brightness_file="/sys/class/backlight/amdgpu_bl1/max_brightness",
-                    fmt="[  {} ]",
+                    fmt=" {}",
                     # change_command="light -S {}",
                     ),
+                widget.TextBox(sep_mid),
                 widget.Battery(
                     charge_char="󱐋",
                     discharge_char="󱊢",
-                    format="[ {char} {percent:2.0%} ]",
+                    format="{char} {percent:2.0%}",
                     ),
+                widget.TextBox(sep_mid),
                 widget.Wlan(
-                    format = "[ 󰖩 {essid} ]"
+                    format = "󰖩 {essid}",
                     ),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
+                widget.TextBox(sep_mid),
+                widget.Clock(format="󰃰 %Y-%m-%d %H:%M"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Clock(format="[ 󰃰 %Y-%m-%d %H:%M ] "),
+                widget.TextBox(sep_end),
                 widget.Systray(),
             ],
             32,
